@@ -19,22 +19,36 @@ services:
       timeout: 5s
       retries: 5
 
-  mysql_slave:
+  mysql_slave_1:
     image: mysql:8.0
     env_file:
-      - ./slave/mysql_slave.env
-    container_name: "mysql_slave"
+      - ./slave-1/mysql_slave.env
+    container_name: "mysql_slave_1"
     restart: "no"
     ports:
       - 20307:20306
     depends_on:
       - mysql_master
     volumes:
-      - ./slave/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
-      - ./slave/data:/var/lib/mysql
+      - ./slave-1/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./slave-1/data:/var/lib/mysql
     networks:
       - overlay
-
+  mysql_slave_2:
+    image: mysql:8.0
+    env_file:
+      - ./slave-2/mysql_slave.env
+    container_name: "mysql_slave_2"
+    restart: "no"
+    ports:
+      - 20308:20306
+    depends_on:
+      - mysql_master
+    volumes:
+      - ./slave-2/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
+      - ./slave-2/data:/var/lib/mysql
+    networks:
+      - overlay
 networks:
   overlay:
 
