@@ -7,6 +7,9 @@ MySQL 8.0 master-slave replication with using Docker. Slave will be in super rea
 
 #### Create 2 MySQL containers with master-slave row-based replication
 
+> [!info]
+> The default password and database name could be change in env file in each database config folder. The current config is set to allow empty password.
+
 ```bash
 ./build.sh
 ```

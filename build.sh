@@ -6,6 +6,10 @@ sudo rm -rf ./slave/data/*
 docker-compose build
 docker-compose up -d
 
+echo "The default password is `111` and database name is `mydb`. They could be change in env file in each database config folder."
+echo "Please check user name in env file in each database config folder."
+echo "The current config is set to allow empty password."
+
 until docker exec mysql_master sh -c 'export MYSQL_PWD=111; mysql -u root -e ";"'
 do
     echo "Waiting for mysql_master database connection..."
