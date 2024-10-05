@@ -5,8 +5,11 @@ MySQL 8.0 master-slave replication with using Docker. Slave will be in super rea
 
 ## Run
 
-#### Create 2 MySQL containers with master-slave row-based replication
+#### Create 3 MySQL containers with master-slave row-based replication
 
+This will create 3 MySQL containers with master-slave replication. The master will be running on port 20306 and the slaves will be running on port 20307 and 20308.
+
+```bash
 > [!info]
 > The default password and database name could be change in env file in each database config folder. The current config is set to allow empty password.
 
